@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <meta charset="UTF-8"/>
+    <title>Titlessss</title>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/nav :: nav"></div>
+
+    <div class="page-container">
+        <div><button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">添加</button></div>
+        <div>
+            <ul class="list-group" th:each="article : ${articleModel.articleList}">
+                <li class="list-group-item"><span th:text="${article.title}"></span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">添加文章</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="article" th:action="article" method="post">
+                        <div>
+                            <label>标题:</label>
+                            <input name="title" type="text"/>
+                        </div>
+                        <div>
+                            <label>内容:</label>
+                            <textarea name="content" rows="30" cols="60"/>
+                        </div>
+                        <div>
+                            <input type="submit" value="保存"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer ::footer"></div>
+</div>
+
+
+
+</body>
+</html>
